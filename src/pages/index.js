@@ -29,6 +29,10 @@ import Add3 from './Add3';
 import Ttd1 from './Ttd1';
 import Ttd2 from './Ttd2';
 import Detail from './Detail';
+import Product from './Product';
+import ProductInput from './ProductInput';
+
+
 
 
 
@@ -44,6 +48,8 @@ import Detail from './Detail';
 export {
   Splash,
   Home,
+  Product,
+  ProductInput,
   Detail,
   Add,
   Add2,

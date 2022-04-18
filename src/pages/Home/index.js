@@ -183,14 +183,14 @@ export default function Home({ navigation }) {
           }}>
           <DataKategori
             warna={colors.zavalabs}
-            onPress={() => navigation.navigate('Jenis')}
+            onPress={() => navigation.navigate('Product')}
             icon="podium-outline"
             nama="MASTER"
             nama2="PRODUK"
           />
           <DataKategori
             warna={colors.zavalabs}
-            onPress={() => navigation.navigate('SuratIzin')}
+            onPress={() => navigation.navigate('ProductInput')}
             icon="create-outline"
             nama="HALAMAN"
             nama2="INPUT"

@@ -20,6 +20,7 @@ export default function MyInput({
   multiline,
   label2,
   styleLabel,
+  ref,
   colorIcon = colors.primary,
 }) {
   return (
@@ -55,6 +56,7 @@ export default function MyInput({
         </Text>
       )}
       <TextInput
+        ref={ref}
         multiline={multiline}
         autoFocus={autoFocus}
         onFocus={onFocus}

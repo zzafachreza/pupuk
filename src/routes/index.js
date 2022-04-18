@@ -31,9 +31,11 @@ import {
   Ttd1,
   Ttd2,
   Detail,
+  ProductInput,
 } from '../pages';
 import { colors } from '../utils';
 import MenuPengalamanAdd from '../pages/MenuPengalamanAdd';
+import Product from '../pages/Product';
 
 const Stack = createStackNavigator();
 
@@ -55,6 +57,33 @@ export default function Router() {
         options={{
           headerShown: false,
           // headerTitle: 'Detail',
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
+
+      <Stack.Screen
+        name="Product"
+        component={Product}
+        options={{
+          headerShown: true,
+          headerTitle: 'Master Product',
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
+      <Stack.Screen
+        name="ProductInput"
+        component={ProductInput}
+        options={{
+          headerShown: true,
+          headerTitle: 'Input Product Transaksi',
           headerStyle: {
             backgroundColor: colors.primary,
           },
