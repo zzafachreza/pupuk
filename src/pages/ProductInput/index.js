@@ -1,8 +1,8 @@
 import { StyleSheet, SafeAreaView, ScrollView, Text, View, TouchableOpacity } from 'react-native'
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import DatePicker from 'react-native-date-picker';
-import { fonts, windowHeight, windowWidth } from '../../utils';
-import { colors, Icon } from 'react-native-elements';
+import { fonts, windowHeight, windowWidth, colors } from '../../utils';
+import { Icon } from 'react-native-elements';
 import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 import RBSheet from "react-native-raw-bottom-sheet";
@@ -10,16 +10,22 @@ import { MyButton, MyGap, MyInput } from '../../components';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
 
+import moment from 'moment';
+
+import MonthPicker from 'react-native-month-year-picker';
+
 export default function ProductInput() {
 
 
     const [kirim, setKirim] = useState({
-        tanggal: new Date()
+        tanggal: moment(new Date()).format(DEFAULT_OUTPUT_FORMAT)
     });
     const [edit, setEdit] = useState({});
     const [data, setData] = useState([]);
     const [tmp, setTmp] = useState([]);
     const refRBSheet = useRef();
+
+
 
     const getDataBarang = () => {
 
@@ -33,11 +39,11 @@ export default function ProductInput() {
 
 
 
-    const getTmp = () => {
+    const getTmp = (x = kirim.tanggal) => {
 
         axios
             .post('https://zavalabs.com/pupuk/api/tmp_transaksi.php', {
-                tanggal: kirim.tanggal
+                tanggal: x
             })
             .then(x => {
                 console.error(x.data);
@@ -54,6 +60,12 @@ export default function ProductInput() {
             .then(x => {
                 console.log(x.data);
                 getTmp();
+                setKirim({
+                    ...kirim,
+                    id_barang: '',
+                    jumlah: '',
+                    total: ''
+                })
             });
     }
 
@@ -70,6 +82,28 @@ export default function ProductInput() {
     }
 
 
+
+    const [date, setDate] = useState(new Date());
+    const [show, setShow] = useState(false);
+
+    const showPicker = useCallback((value) => setShow(value), []);
+
+    const onValueChange = useCallback(
+        (event, newDate) => {
+            const selectedDate = newDate || date;
+
+            showPicker(false);
+            setDate(selectedDate);
+            setKirim({
+                ...kirim,
+                tanggal: moment(selectedDate).format(DEFAULT_OUTPUT_FORMAT)
+            })
+            getTmp(moment(selectedDate).format(DEFAULT_OUTPUT_FORMAT));
+        },
+        [date, showPicker],
+    );
+
+    const DEFAULT_OUTPUT_FORMAT = 'MM-YYYY';
 
     useEffect(() => {
         getDataBarang();
@@ -97,16 +131,39 @@ export default function ProductInput() {
                             left: 10,
                             fontSize: 14,
                         }}>
-                        Masukan tanggal transaksi
+                        Masukan Bulan Transaksi
                     </Text>
                 </View>
-                <DatePicker style={{
-                    width: windowWidth,
-                    height: 170,
-                }} androidVariant='nativeAndroid' mode="date" date={kirim.tanggal == null ? new Date() : new Date(kirim.tanggal)} onDateChange={val => setKirim({
-                    ...kirim,
-                    tanggal: val
-                })} />
+                {show && <MonthPicker
+                    onChange={onValueChange}
+
+
+                    value={date}
+                    minimumDate={new Date(2020)}
+                    maximumDate={new Date(2025, 5)}
+                    locale="id"
+                />}
+
+                <View style={{
+                    flexDirection: 'row',
+                    padding: 10,
+                }}>
+                    <View style={{ flex: 1, }}>
+                        <Text>{moment(date).format(DEFAULT_OUTPUT_FORMAT)}</Text>
+                    </View>
+                    <View>
+                        <TouchableOpacity style={{
+                            padding: 5,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+
+                            backgroundColor: colors.secondary,
+                            width: 80,
+                        }} onPress={() => showPicker(true)}>
+                            <Icon type='ionicon' name='calendar-outline' size={windowWidth / 25} color={colors.white} />
+                        </TouchableOpacity>
+                    </View>
+                </View>
                 <View
                     style={{
                         flexDirection: 'row',
@@ -182,7 +239,7 @@ export default function ProductInput() {
                     }}>
                         <Text style={{
                             color: colors.white
-                        }}>Total</Text>
+                        }}>Total Harga</Text>
                     </View>
                     <View style={{
                         flex: 1,
@@ -259,12 +316,12 @@ export default function ProductInput() {
                 }}>
 
                     <MyGap jarak={10} />
-                    <MyInput autoFocus={true} keyboardType="number-pad" label="Jumlah" iconname="create-outline" multiline={true} value={kirim.jumlah} onChangeText={x => setKirim({
+                    <MyInput autoFocus={true} keyboardType="number-pad" label="Jumlah" iconname="create-outline" value={kirim.jumlah} onChangeText={x => setKirim({
                         ...kirim,
                         jumlah: x
                     })} />
                     <MyGap jarak={20} />
-                    <MyInput keyboardType="number-pad" label="Total" iconname="create-outline" multiline={true} value={kirim.total} onChangeText={x => setKirim({
+                    <MyInput keyboardType="number-pad" label="Total" iconname="create-outline" value={kirim.total} onChangeText={x => setKirim({
                         ...kirim,
                         total: x
                     })} />

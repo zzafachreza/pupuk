@@ -32,6 +32,12 @@ import {
   Ttd2,
   Detail,
   ProductInput,
+  ProductHistory,
+  ProductTable,
+  ProductGrafik,
+  ProductForecast,
+  ProductTable2,
+  ProductGrafik2,
 } from '../pages';
 import { colors } from '../utils';
 import MenuPengalamanAdd from '../pages/MenuPengalamanAdd';
@@ -84,6 +90,86 @@ export default function Router() {
         options={{
           headerShown: true,
           headerTitle: 'Input Product Transaksi',
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
+      <Stack.Screen
+        name="ProductHistory"
+        component={ProductHistory}
+        options={{
+          headerShown: true,
+          headerTitle: 'History Transaksi',
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
+      <Stack.Screen
+        name="ProductTable"
+        component={ProductTable}
+        options={{
+          headerShown: true,
+          headerTitle: 'Metode ARIMA',
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
+
+      <Stack.Screen
+        name="ProductTable2"
+        component={ProductTable2}
+        options={{
+          headerShown: true,
+          headerTitle: 'Metode Single Exponential Smoothing',
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
+
+      <Stack.Screen
+        name="ProductForecast"
+        component={ProductForecast}
+        options={{
+          headerShown: true,
+          headerTitle: 'Forcast Product',
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
+      <Stack.Screen
+        name="ProductGrafik"
+        component={ProductGrafik}
+        options={{
+          headerShown: true,
+          headerTitle: 'Metode ARIMA',
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
+      <Stack.Screen
+        name="ProductGrafik2"
+        component={ProductGrafik2}
+        options={{
+          headerShown: true,
+          headerTitle: 'Metode Single Exponential Smoothing',
           headerStyle: {
             backgroundColor: colors.primary,
           },

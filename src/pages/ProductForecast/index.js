@@ -84,7 +84,7 @@ export default function ({ navigation, route }) {
 
             style={{
                 padding: 10,
-                margin: 10,
+                margin: 5,
                 backgroundColor: 'white',
                 elevation: 1,
             }}>
@@ -143,6 +143,82 @@ export default function ({ navigation, route }) {
                     borderTopWidth: 1,
                     borderTopColor: colors.tertiary,
                 }}>
+                <View style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
+                    <Text style={{
+                        fontSize: windowWidth / 30,
+                        fontFamily: fonts.secondary[800],
+                        color: colors.danger,
+                    }}>ARIMA</Text>
+                </View>
+
+
+                <TouchableOpacity style={{
+                    padding: 10,
+                    backgroundColor: colors.secondary,
+                    flex: 1,
+                    flexDirection: "row",
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }} onPress={
+                    () => navigation.navigate('ProductTable', item)
+
+                }>
+                    <Icon type='ionicon' name='alarm-outline' size={windowWidth / 25} color={colors.white} />
+                    <Text style={{
+                        color: colors.white,
+                        left: 5,
+                        fontFamily: fonts.secondary[600],
+                        fontSize: windowWidth / 25
+
+                    }}>Forecast</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={{
+                    padding: 10,
+                    backgroundColor: colors.success,
+                    flex: 1,
+                    flexDirection: "row",
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }} onPress={() => navigation.navigate('ProductGrafik', item)
+                }>
+                    <Icon type='ionicon' name='bar-chart-outline' size={windowWidth / 25} color={colors.white} />
+                    <Text style={{
+                        color: colors.white,
+                        left: 5,
+                        fontFamily: fonts.secondary[600],
+                        fontSize: windowWidth / 25
+
+                    }}>Grafik</Text>
+                </TouchableOpacity>
+
+
+            </View>
+
+            <View
+                style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    borderTopWidth: 1,
+                    borderTopColor: colors.tertiary,
+                }}>
+                <View style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
+                    <Text style={{
+                        fontSize: windowWidth / 30,
+                        fontFamily: fonts.secondary[800],
+                        color: colors.primary,
+                    }}>SES</Text>
+                </View>
+
+
                 <TouchableOpacity style={{
                     padding: 10,
                     backgroundColor: colors.primary,
@@ -150,23 +226,38 @@ export default function ({ navigation, route }) {
                     flexDirection: "row",
                     justifyContent: 'center',
                     alignItems: 'center'
-                }} onPress={() => {
-                    setEdit(item);
-                    refRBSheet.current.open();
-                }
+                }} onPress={
+                    () => navigation.navigate('ProductTable2', item)
+
                 }>
-                    <Icon type='ionicon' name='create-outline' size={windowWidth / 25} color={colors.white} />
+                    <Icon type='ionicon' name='alarm-outline' size={windowWidth / 25} color={colors.white} />
                     <Text style={{
                         color: colors.white,
                         left: 5,
                         fontFamily: fonts.secondary[600],
                         fontSize: windowWidth / 25
 
-                    }}>Edit</Text>
+                    }}>Forecast</Text>
                 </TouchableOpacity>
 
+                <TouchableOpacity style={{
+                    padding: 10,
+                    backgroundColor: colors.danger,
+                    flex: 1,
+                    flexDirection: "row",
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }} onPress={() => navigation.navigate('ProductGrafik2', item)
+                }>
+                    <Icon type='ionicon' name='bar-chart-outline' size={windowWidth / 25} color={colors.white} />
+                    <Text style={{
+                        color: colors.white,
+                        left: 5,
+                        fontFamily: fonts.secondary[600],
+                        fontSize: windowWidth / 25
 
-
+                    }}>Grafik</Text>
+                </TouchableOpacity>
 
 
             </View>

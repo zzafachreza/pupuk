@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { colors, fonts, windowHeight, windowWidth } from '../../utils';
 import { getData } from '../../utils/localStorage';
-
+import Orientation from 'react-native-orientation';
 export default function Splash({ navigation }) {
   const top = new Animated.Value(0.3);
 
@@ -35,7 +35,7 @@ export default function Splash({ navigation }) {
 
   useEffect(() => {
     animasi();
-
+    Orientation.lockToPortrait();
 
     const unsubscribe = getData('user').then(res => {
       // console.log(res);

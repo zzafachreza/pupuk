@@ -31,6 +31,13 @@ import Ttd2 from './Ttd2';
 import Detail from './Detail';
 import Product from './Product';
 import ProductInput from './ProductInput';
+import ProductHistory from './ProductHistory';
+import ProductTable from './ProductTable';
+import ProductGrafik from './ProductGrafik';
+import ProductForecast from './ProductForecast';
+import ProductGrafik2 from './ProductGrafik2';
+import ProductTable2 from './ProductTable2';
+
 
 
 
@@ -50,6 +57,12 @@ export {
   Home,
   Product,
   ProductInput,
+  ProductHistory,
+  ProductForecast,
+  ProductTable,
+  ProductGrafik,
+  ProductGrafik2,
+  ProductTable2,
   Detail,
   Add,
   Add2,

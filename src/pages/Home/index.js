@@ -205,14 +205,14 @@ export default function Home({ navigation }) {
           }}>
           <DataKategori
             warna={colors.zavalabs}
-            onPress={() => navigation.navigate('ListData')}
+            onPress={() => navigation.navigate('ProductForecast')}
             icon="analytics-outline"
             nama="HALAMAN"
             nama2="PERAMALAN"
           />
           <DataKategori
             warna={colors.zavalabs}
-            onPress={() => navigation.navigate('ListData2')}
+            onPress={() => navigation.navigate('ProductHistory')}
             icon="document-text-outline"
             nama="HALAMAN"
             nama2="HISTORY"
