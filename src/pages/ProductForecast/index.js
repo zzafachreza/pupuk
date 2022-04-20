@@ -177,24 +177,7 @@ export default function ({ navigation, route }) {
                     }}>Forecast</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{
-                    padding: 10,
-                    backgroundColor: colors.success,
-                    flex: 1,
-                    flexDirection: "row",
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }} onPress={() => navigation.navigate('ProductGrafik', item)
-                }>
-                    <Icon type='ionicon' name='bar-chart-outline' size={windowWidth / 25} color={colors.white} />
-                    <Text style={{
-                        color: colors.white,
-                        left: 5,
-                        fontFamily: fonts.secondary[600],
-                        fontSize: windowWidth / 25
 
-                    }}>Grafik</Text>
-                </TouchableOpacity>
 
 
             </View>
@@ -240,24 +223,7 @@ export default function ({ navigation, route }) {
                     }}>Forecast</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{
-                    padding: 10,
-                    backgroundColor: colors.danger,
-                    flex: 1,
-                    flexDirection: "row",
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }} onPress={() => navigation.navigate('ProductGrafik2', item)
-                }>
-                    <Icon type='ionicon' name='bar-chart-outline' size={windowWidth / 25} color={colors.white} />
-                    <Text style={{
-                        color: colors.white,
-                        left: 5,
-                        fontFamily: fonts.secondary[600],
-                        fontSize: windowWidth / 25
 
-                    }}>Grafik</Text>
-                </TouchableOpacity>
 
 
             </View>
